@@ -1,0 +1,7 @@
+{
+    "script": [
+        "db.test = CSV (`Col1,Col2\na1,a2\nb1,b3`)",
+        "tbl.test = db.test",
+        "tbl.test._c1 = CONCAT(tbl.test.Col1, tbl.test.Col2 + 1)"
+    ]
+}

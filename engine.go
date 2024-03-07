@@ -545,7 +545,7 @@ func (engine *Engine) evalParallel(cmd string, colVals []ResultValueType, rhsN *
 
 func (engine *Engine) evaluateTreeInt(node *Node, level int) (ResultValueType, error) {
 	if node.Ctx == CTX_ExpressionContext {
-		if len(node.Children) == 1 && (node.Children[0].Ctx == CTX_FunctionContext || node.Children[0].Ctx == CTX_TerminalNode || node.Children[0].Ctx == CTX_ExpressionContext) {
+		if len(node.Children) == 1 && (node.Children[0].Ctx == CTX_FunctionContext || node.Children[0].Ctx == CTX_FunctionNoArgsContext || node.Children[0].Ctx == CTX_TerminalNode || node.Children[0].Ctx == CTX_ExpressionContext) {
 			val, err := engine.evaluateTreeInt(node.Children[0], level+1)
 			return val, err
 		}
@@ -580,8 +580,17 @@ func (engine *Engine) evaluateTreeInt(node *Node, level int) (ResultValueType, e
 	}
 
 	// function
-	if (node.Ctx == CTX_ExpressionContext || node.Ctx == CTX_FunctionContext) && len(node.Children) == 2 && node.Children[0].Ctx == CTX_TerminalNode && node.Children[1].Ctx == CTX_ArgumentsContext {
+	cond1 := node.Ctx == CTX_ExpressionContext && len(node.Children) == 1 && node.Children[0].Ctx == CTX_FunctionNoArgsContext
+	cond2 := node.Ctx == CTX_ExpressionContext && len(node.Children) == 2 && node.Children[0].Ctx == CTX_FunctionContext && node.Children[1].Ctx == CTX_ArgumentsContext
+	cond3 := node.Ctx == CTX_ExpressionContext && len(node.Children) > 0 && (node.Children[0].Ctx == CTX_FunctionNoArgsContext || node.Children[0].Ctx == CTX_FunctionContext)
+	cond4 := node.Ctx == CTX_FunctionContext && len(node.Children) == 2 && (node.Children[0].Ctx == CTX_TerminalNode && node.Children[1].Ctx == CTX_ArgumentsContext)
+	cond5 := node.Ctx == CTX_FunctionNoArgsContext && len(node.Children) == 1 && node.Children[0].Ctx == CTX_TerminalNode
+	if cond1 || cond2 || cond3 || cond4 || cond5 {
 		fn := node.Children[0].Text
+		if node.Children[0].Ctx == CTX_FunctionNoArgsContext {
+			// Trim brackets from fn
+			fn = strings.ReplaceAll(strings.ReplaceAll(fn, "(", ""), ")", "")
+		}
 		if _, ok := ALL_FUNCTIONS[fn]; !ok {
 			return nil, fmt.Errorf("bad function: %s", fn)
 		}
@@ -590,13 +599,15 @@ func (engine *Engine) evaluateTreeInt(node *Node, level int) (ResultValueType, e
 			return res, err
 		}
 
-		argVals := make([]ResultValueType, 0, len(node.Children[1].Children))
-		for _, child := range node.Children[1].Children {
-			val, err := engine.evaluateTreeInt(child, level+1)
-			if err != nil {
-				return nil, err
+		argVals := make([]ResultValueType, 0)
+		if len(node.Children) > 1 {
+			for _, child := range node.Children[1].Children {
+				val, err := engine.evaluateTreeInt(child, level+1)
+				if err != nil {
+					return nil, err
+				}
+				argVals = append(argVals, val)
 			}
-			argVals = append(argVals, val)
 		}
 
 		if fn == FUNC_LOAD_CSV { // TODO: Move to functions.go
@@ -674,6 +685,9 @@ func (engine *Engine) dfsParse(t antlr.Tree) (Node, error) {
 		text = tt.GetText()
 	case *parser.FunctionContext:
 		ctx = CTX_FunctionContext
+		text = tt.GetText()
+	case *parser.FunctionNoArgsContext:
+		ctx = CTX_FunctionNoArgsContext
 		text = tt.GetText()
 	case *parser.MathFnContext:
 		ctx = CTX_MathOpContext

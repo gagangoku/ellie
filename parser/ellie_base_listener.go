@@ -45,6 +45,12 @@ func (s *BaseEllieListener) EnterFunction(ctx *FunctionContext) {}
 // ExitFunction is called when production function is exited.
 func (s *BaseEllieListener) ExitFunction(ctx *FunctionContext) {}
 
+// EnterFunctionNoArgs is called when production functionNoArgs is entered.
+func (s *BaseEllieListener) EnterFunctionNoArgs(ctx *FunctionNoArgsContext) {}
+
+// ExitFunctionNoArgs is called when production functionNoArgs is exited.
+func (s *BaseEllieListener) ExitFunctionNoArgs(ctx *FunctionNoArgsContext) {}
+
 // EnterLogicalFn is called when production logicalFn is entered.
 func (s *BaseEllieListener) EnterLogicalFn(ctx *LogicalFnContext) {}
 

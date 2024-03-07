@@ -20,6 +20,9 @@ type EllieListener interface {
 	// EnterFunction is called when entering the function production.
 	EnterFunction(c *FunctionContext)
 
+	// EnterFunctionNoArgs is called when entering the functionNoArgs production.
+	EnterFunctionNoArgs(c *FunctionNoArgsContext)
+
 	// EnterLogicalFn is called when entering the logicalFn production.
 	EnterLogicalFn(c *LogicalFnContext)
 
@@ -46,6 +49,9 @@ type EllieListener interface {
 
 	// ExitFunction is called when exiting the function production.
 	ExitFunction(c *FunctionContext)
+
+	// ExitFunctionNoArgs is called when exiting the functionNoArgs production.
+	ExitFunctionNoArgs(c *FunctionNoArgsContext)
 
 	// ExitLogicalFn is called when exiting the logicalFn production.
 	ExitLogicalFn(c *LogicalFnContext)

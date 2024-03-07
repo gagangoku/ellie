@@ -44,46 +44,49 @@ func ellieParserInit() {
 		"SPACE",
 	}
 	staticData.RuleNames = []string{
-		"prog", "lhs", "expression", "function", "logicalFn", "mathFn", "setFn",
-		"arguments", "bool",
+		"prog", "lhs", "expression", "function", "functionNoArgs", "logicalFn",
+		"mathFn", "setFn", "arguments", "bool",
 	}
 	staticData.PredictionContextCache = antlr.NewPredictionContextCache()
 	staticData.serializedATN = []int32{
-		4, 1, 31, 84, 2, 0, 7, 0, 2, 1, 7, 1, 2, 2, 7, 2, 2, 3, 7, 3, 2, 4, 7,
-		4, 2, 5, 7, 5, 2, 6, 7, 6, 2, 7, 7, 7, 2, 8, 7, 8, 1, 0, 1, 0, 1, 0, 1,
-		0, 1, 0, 1, 1, 1, 1, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1,
-		2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 3, 2, 42, 8, 2, 1, 2, 1, 2,
-		1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 5, 2, 56, 8,
-		2, 10, 2, 12, 2, 59, 9, 2, 1, 3, 1, 3, 1, 3, 3, 3, 64, 8, 3, 1, 3, 1, 3,
-		1, 4, 1, 4, 1, 5, 1, 5, 1, 6, 1, 6, 1, 7, 1, 7, 1, 7, 5, 7, 77, 8, 7, 10,
-		7, 12, 7, 80, 9, 7, 1, 8, 1, 8, 1, 8, 0, 1, 4, 9, 0, 2, 4, 6, 8, 10, 12,
-		14, 16, 0, 5, 1, 0, 20, 25, 1, 0, 4, 5, 1, 0, 6, 16, 1, 0, 17, 18, 1, 0,
-		26, 27, 90, 0, 18, 1, 0, 0, 0, 2, 23, 1, 0, 0, 0, 4, 41, 1, 0, 0, 0, 6,
-		60, 1, 0, 0, 0, 8, 67, 1, 0, 0, 0, 10, 69, 1, 0, 0, 0, 12, 71, 1, 0, 0,
-		0, 14, 73, 1, 0, 0, 0, 16, 81, 1, 0, 0, 0, 18, 19, 3, 2, 1, 0, 19, 20,
-		5, 1, 0, 0, 20, 21, 3, 4, 2, 0, 21, 22, 5, 0, 0, 1, 22, 1, 1, 0, 0, 0,
-		23, 24, 7, 0, 0, 0, 24, 3, 1, 0, 0, 0, 25, 26, 6, 2, -1, 0, 26, 42, 3,
-		6, 3, 0, 27, 42, 3, 16, 8, 0, 28, 42, 5, 30, 0, 0, 29, 42, 5, 28, 0, 0,
-		30, 42, 5, 21, 0, 0, 31, 42, 5, 20, 0, 0, 32, 42, 5, 23, 0, 0, 33, 42,
-		5, 22, 0, 0, 34, 42, 5, 24, 0, 0, 35, 42, 5, 25, 0, 0, 36, 42, 5, 29, 0,
-		0, 37, 38, 5, 2, 0, 0, 38, 39, 3, 4, 2, 0, 39, 40, 5, 3, 0, 0, 40, 42,
-		1, 0, 0, 0, 41, 25, 1, 0, 0, 0, 41, 27, 1, 0, 0, 0, 41, 28, 1, 0, 0, 0,
-		41, 29, 1, 0, 0, 0, 41, 30, 1, 0, 0, 0, 41, 31, 1, 0, 0, 0, 41, 32, 1,
-		0, 0, 0, 41, 33, 1, 0, 0, 0, 41, 34, 1, 0, 0, 0, 41, 35, 1, 0, 0, 0, 41,
-		36, 1, 0, 0, 0, 41, 37, 1, 0, 0, 0, 42, 57, 1, 0, 0, 0, 43, 44, 10, 15,
-		0, 0, 44, 45, 3, 8, 4, 0, 45, 46, 3, 4, 2, 16, 46, 56, 1, 0, 0, 0, 47,
-		48, 10, 14, 0, 0, 48, 49, 3, 10, 5, 0, 49, 50, 3, 4, 2, 15, 50, 56, 1,
-		0, 0, 0, 51, 52, 10, 13, 0, 0, 52, 53, 3, 12, 6, 0, 53, 54, 3, 4, 2, 14,
-		54, 56, 1, 0, 0, 0, 55, 43, 1, 0, 0, 0, 55, 47, 1, 0, 0, 0, 55, 51, 1,
-		0, 0, 0, 56, 59, 1, 0, 0, 0, 57, 55, 1, 0, 0, 0, 57, 58, 1, 0, 0, 0, 58,
-		5, 1, 0, 0, 0, 59, 57, 1, 0, 0, 0, 60, 61, 5, 29, 0, 0, 61, 63, 5, 2, 0,
-		0, 62, 64, 3, 14, 7, 0, 63, 62, 1, 0, 0, 0, 63, 64, 1, 0, 0, 0, 64, 65,
-		1, 0, 0, 0, 65, 66, 5, 3, 0, 0, 66, 7, 1, 0, 0, 0, 67, 68, 7, 1, 0, 0,
-		68, 9, 1, 0, 0, 0, 69, 70, 7, 2, 0, 0, 70, 11, 1, 0, 0, 0, 71, 72, 7, 3,
-		0, 0, 72, 13, 1, 0, 0, 0, 73, 78, 3, 4, 2, 0, 74, 75, 5, 19, 0, 0, 75,
-		77, 3, 4, 2, 0, 76, 74, 1, 0, 0, 0, 77, 80, 1, 0, 0, 0, 78, 76, 1, 0, 0,
-		0, 78, 79, 1, 0, 0, 0, 79, 15, 1, 0, 0, 0, 80, 78, 1, 0, 0, 0, 81, 82,
-		7, 4, 0, 0, 82, 17, 1, 0, 0, 0, 5, 41, 55, 57, 63, 78,
+		4, 1, 31, 92, 2, 0, 7, 0, 2, 1, 7, 1, 2, 2, 7, 2, 2, 3, 7, 3, 2, 4, 7,
+		4, 2, 5, 7, 5, 2, 6, 7, 6, 2, 7, 7, 7, 2, 8, 7, 8, 2, 9, 7, 9, 1, 0, 1,
+		0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1,
+		2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 3, 2, 45,
+		8, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2,
+		1, 2, 5, 2, 59, 8, 2, 10, 2, 12, 2, 62, 9, 2, 1, 3, 1, 3, 1, 3, 1, 3, 3,
+		3, 68, 8, 3, 1, 3, 1, 3, 1, 4, 1, 4, 1, 4, 1, 4, 1, 5, 1, 5, 1, 6, 1, 6,
+		1, 7, 1, 7, 1, 8, 1, 8, 1, 8, 5, 8, 85, 8, 8, 10, 8, 12, 8, 88, 9, 8, 1,
+		9, 1, 9, 1, 9, 0, 1, 4, 10, 0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 0, 5, 1,
+		0, 20, 25, 1, 0, 4, 5, 1, 0, 6, 16, 1, 0, 17, 18, 1, 0, 26, 27, 98, 0,
+		20, 1, 0, 0, 0, 2, 25, 1, 0, 0, 0, 4, 44, 1, 0, 0, 0, 6, 63, 1, 0, 0, 0,
+		8, 71, 1, 0, 0, 0, 10, 75, 1, 0, 0, 0, 12, 77, 1, 0, 0, 0, 14, 79, 1, 0,
+		0, 0, 16, 81, 1, 0, 0, 0, 18, 89, 1, 0, 0, 0, 20, 21, 3, 2, 1, 0, 21, 22,
+		5, 1, 0, 0, 22, 23, 3, 4, 2, 0, 23, 24, 5, 0, 0, 1, 24, 1, 1, 0, 0, 0,
+		25, 26, 7, 0, 0, 0, 26, 3, 1, 0, 0, 0, 27, 28, 6, 2, -1, 0, 28, 45, 3,
+		6, 3, 0, 29, 45, 3, 8, 4, 0, 30, 45, 3, 18, 9, 0, 31, 45, 5, 30, 0, 0,
+		32, 45, 5, 28, 0, 0, 33, 45, 5, 21, 0, 0, 34, 45, 5, 20, 0, 0, 35, 45,
+		5, 23, 0, 0, 36, 45, 5, 22, 0, 0, 37, 45, 5, 24, 0, 0, 38, 45, 5, 25, 0,
+		0, 39, 45, 5, 29, 0, 0, 40, 41, 5, 2, 0, 0, 41, 42, 3, 4, 2, 0, 42, 43,
+		5, 3, 0, 0, 43, 45, 1, 0, 0, 0, 44, 27, 1, 0, 0, 0, 44, 29, 1, 0, 0, 0,
+		44, 30, 1, 0, 0, 0, 44, 31, 1, 0, 0, 0, 44, 32, 1, 0, 0, 0, 44, 33, 1,
+		0, 0, 0, 44, 34, 1, 0, 0, 0, 44, 35, 1, 0, 0, 0, 44, 36, 1, 0, 0, 0, 44,
+		37, 1, 0, 0, 0, 44, 38, 1, 0, 0, 0, 44, 39, 1, 0, 0, 0, 44, 40, 1, 0, 0,
+		0, 45, 60, 1, 0, 0, 0, 46, 47, 10, 16, 0, 0, 47, 48, 3, 10, 5, 0, 48, 49,
+		3, 4, 2, 17, 49, 59, 1, 0, 0, 0, 50, 51, 10, 15, 0, 0, 51, 52, 3, 12, 6,
+		0, 52, 53, 3, 4, 2, 16, 53, 59, 1, 0, 0, 0, 54, 55, 10, 14, 0, 0, 55, 56,
+		3, 14, 7, 0, 56, 57, 3, 4, 2, 15, 57, 59, 1, 0, 0, 0, 58, 46, 1, 0, 0,
+		0, 58, 50, 1, 0, 0, 0, 58, 54, 1, 0, 0, 0, 59, 62, 1, 0, 0, 0, 60, 58,
+		1, 0, 0, 0, 60, 61, 1, 0, 0, 0, 61, 5, 1, 0, 0, 0, 62, 60, 1, 0, 0, 0,
+		63, 64, 5, 29, 0, 0, 64, 65, 5, 2, 0, 0, 65, 67, 3, 16, 8, 0, 66, 68, 3,
+		16, 8, 0, 67, 66, 1, 0, 0, 0, 67, 68, 1, 0, 0, 0, 68, 69, 1, 0, 0, 0, 69,
+		70, 5, 3, 0, 0, 70, 7, 1, 0, 0, 0, 71, 72, 5, 29, 0, 0, 72, 73, 5, 2, 0,
+		0, 73, 74, 5, 3, 0, 0, 74, 9, 1, 0, 0, 0, 75, 76, 7, 1, 0, 0, 76, 11, 1,
+		0, 0, 0, 77, 78, 7, 2, 0, 0, 78, 13, 1, 0, 0, 0, 79, 80, 7, 3, 0, 0, 80,
+		15, 1, 0, 0, 0, 81, 86, 3, 4, 2, 0, 82, 83, 5, 19, 0, 0, 83, 85, 3, 4,
+		2, 0, 84, 82, 1, 0, 0, 0, 85, 88, 1, 0, 0, 0, 86, 84, 1, 0, 0, 0, 86, 87,
+		1, 0, 0, 0, 87, 17, 1, 0, 0, 0, 88, 86, 1, 0, 0, 0, 89, 90, 7, 4, 0, 0,
+		90, 19, 1, 0, 0, 0, 5, 44, 58, 60, 67, 86,
 	}
 	deserializer := antlr.NewATNDeserializer(nil)
 	staticData.atn = deserializer.Deserialize(staticData.serializedATN)
@@ -157,15 +160,16 @@ const (
 
 // EllieParser rules.
 const (
-	EllieParserRULE_prog       = 0
-	EllieParserRULE_lhs        = 1
-	EllieParserRULE_expression = 2
-	EllieParserRULE_function   = 3
-	EllieParserRULE_logicalFn  = 4
-	EllieParserRULE_mathFn     = 5
-	EllieParserRULE_setFn      = 6
-	EllieParserRULE_arguments  = 7
-	EllieParserRULE_bool       = 8
+	EllieParserRULE_prog           = 0
+	EllieParserRULE_lhs            = 1
+	EllieParserRULE_expression     = 2
+	EllieParserRULE_function       = 3
+	EllieParserRULE_functionNoArgs = 4
+	EllieParserRULE_logicalFn      = 5
+	EllieParserRULE_mathFn         = 6
+	EllieParserRULE_setFn          = 7
+	EllieParserRULE_arguments      = 8
+	EllieParserRULE_bool           = 9
 )
 
 // IProgContext is an interface to support dynamic dispatch.
@@ -277,11 +281,11 @@ func (p *EllieParser) Prog() (localctx IProgContext) {
 	p.EnterRule(localctx, 0, EllieParserRULE_prog)
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(18)
+		p.SetState(20)
 		p.Lhs()
 	}
 	{
-		p.SetState(19)
+		p.SetState(21)
 		p.Match(EllieParserT__0)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -289,11 +293,11 @@ func (p *EllieParser) Prog() (localctx IProgContext) {
 		}
 	}
 	{
-		p.SetState(20)
+		p.SetState(22)
 		p.expression(0)
 	}
 	{
-		p.SetState(21)
+		p.SetState(23)
 		p.Match(EllieParserEOF)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -416,7 +420,7 @@ func (p *EllieParser) Lhs() (localctx ILhsContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(23)
+		p.SetState(25)
 		_la = p.GetTokenStream().LA(1)
 
 		if !((int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&66060288) != 0) {
@@ -449,6 +453,7 @@ type IExpressionContext interface {
 
 	// Getter signatures
 	Function() IFunctionContext
+	FunctionNoArgs() IFunctionNoArgsContext
 	Bool_() IBoolContext
 	TEXT() antlr.TerminalNode
 	NUMBER() antlr.TerminalNode
@@ -515,6 +520,22 @@ func (s *ExpressionContext) Function() IFunctionContext {
 	}
 
 	return t.(IFunctionContext)
+}
+
+func (s *ExpressionContext) FunctionNoArgs() IFunctionNoArgsContext {
+	var t antlr.RuleContext
+	for _, ctx := range s.GetChildren() {
+		if _, ok := ctx.(IFunctionNoArgsContext); ok {
+			t = ctx.(antlr.RuleContext)
+			break
+		}
+	}
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IFunctionNoArgsContext)
 }
 
 func (s *ExpressionContext) Bool_() IBoolContext {
@@ -694,7 +715,7 @@ func (p *EllieParser) expression(_p int) (localctx IExpressionContext) {
 	var _alt int
 
 	p.EnterOuterAlt(localctx, 1)
-	p.SetState(41)
+	p.SetState(44)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
 		goto errorExit
@@ -703,30 +724,26 @@ func (p *EllieParser) expression(_p int) (localctx IExpressionContext) {
 	switch p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 0, p.GetParserRuleContext()) {
 	case 1:
 		{
-			p.SetState(26)
+			p.SetState(28)
 			p.Function()
 		}
 
 	case 2:
 		{
-			p.SetState(27)
-			p.Bool_()
+			p.SetState(29)
+			p.FunctionNoArgs()
 		}
 
 	case 3:
 		{
-			p.SetState(28)
-			p.Match(EllieParserTEXT)
-			if p.HasError() {
-				// Recognition error - abort rule
-				goto errorExit
-			}
+			p.SetState(30)
+			p.Bool_()
 		}
 
 	case 4:
 		{
-			p.SetState(29)
-			p.Match(EllieParserNUMBER)
+			p.SetState(31)
+			p.Match(EllieParserTEXT)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -735,8 +752,8 @@ func (p *EllieParser) expression(_p int) (localctx IExpressionContext) {
 
 	case 5:
 		{
-			p.SetState(30)
-			p.Match(EllieParserTERM_TABLE_COL)
+			p.SetState(32)
+			p.Match(EllieParserNUMBER)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -745,8 +762,8 @@ func (p *EllieParser) expression(_p int) (localctx IExpressionContext) {
 
 	case 6:
 		{
-			p.SetState(31)
-			p.Match(EllieParserTERM_TABLE)
+			p.SetState(33)
+			p.Match(EllieParserTERM_TABLE_COL)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -755,8 +772,8 @@ func (p *EllieParser) expression(_p int) (localctx IExpressionContext) {
 
 	case 7:
 		{
-			p.SetState(32)
-			p.Match(EllieParserTERM_DB_COL)
+			p.SetState(34)
+			p.Match(EllieParserTERM_TABLE)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -765,8 +782,8 @@ func (p *EllieParser) expression(_p int) (localctx IExpressionContext) {
 
 	case 8:
 		{
-			p.SetState(33)
-			p.Match(EllieParserTERM_DB)
+			p.SetState(35)
+			p.Match(EllieParserTERM_DB_COL)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -775,8 +792,8 @@ func (p *EllieParser) expression(_p int) (localctx IExpressionContext) {
 
 	case 9:
 		{
-			p.SetState(34)
-			p.Match(EllieParserTERM_CONST)
+			p.SetState(36)
+			p.Match(EllieParserTERM_DB)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -785,8 +802,8 @@ func (p *EllieParser) expression(_p int) (localctx IExpressionContext) {
 
 	case 10:
 		{
-			p.SetState(35)
-			p.Match(EllieParserTERM_STAT)
+			p.SetState(37)
+			p.Match(EllieParserTERM_CONST)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -795,8 +812,8 @@ func (p *EllieParser) expression(_p int) (localctx IExpressionContext) {
 
 	case 11:
 		{
-			p.SetState(36)
-			p.Match(EllieParserID)
+			p.SetState(38)
+			p.Match(EllieParserTERM_STAT)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -805,7 +822,17 @@ func (p *EllieParser) expression(_p int) (localctx IExpressionContext) {
 
 	case 12:
 		{
-			p.SetState(37)
+			p.SetState(39)
+			p.Match(EllieParserID)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
+		}
+
+	case 13:
+		{
+			p.SetState(40)
 			p.Match(EllieParserT__1)
 			if p.HasError() {
 				// Recognition error - abort rule
@@ -813,11 +840,11 @@ func (p *EllieParser) expression(_p int) (localctx IExpressionContext) {
 			}
 		}
 		{
-			p.SetState(38)
+			p.SetState(41)
 			p.expression(0)
 		}
 		{
-			p.SetState(39)
+			p.SetState(42)
 			p.Match(EllieParserT__2)
 			if p.HasError() {
 				// Recognition error - abort rule
@@ -829,7 +856,7 @@ func (p *EllieParser) expression(_p int) (localctx IExpressionContext) {
 		goto errorExit
 	}
 	p.GetParserRuleContext().SetStop(p.GetTokenStream().LT(-1))
-	p.SetState(57)
+	p.SetState(60)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
 		goto errorExit
@@ -844,7 +871,7 @@ func (p *EllieParser) expression(_p int) (localctx IExpressionContext) {
 				p.TriggerExitRuleEvent()
 			}
 			_prevctx = localctx
-			p.SetState(55)
+			p.SetState(58)
 			p.GetErrorHandler().Sync(p)
 			if p.HasError() {
 				goto errorExit
@@ -854,55 +881,55 @@ func (p *EllieParser) expression(_p int) (localctx IExpressionContext) {
 			case 1:
 				localctx = NewExpressionContext(p, _parentctx, _parentState)
 				p.PushNewRecursionContext(localctx, _startState, EllieParserRULE_expression)
-				p.SetState(43)
+				p.SetState(46)
+
+				if !(p.Precpred(p.GetParserRuleContext(), 16)) {
+					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 16)", ""))
+					goto errorExit
+				}
+				{
+					p.SetState(47)
+					p.LogicalFn()
+				}
+				{
+					p.SetState(48)
+					p.expression(17)
+				}
+
+			case 2:
+				localctx = NewExpressionContext(p, _parentctx, _parentState)
+				p.PushNewRecursionContext(localctx, _startState, EllieParserRULE_expression)
+				p.SetState(50)
 
 				if !(p.Precpred(p.GetParserRuleContext(), 15)) {
 					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 15)", ""))
 					goto errorExit
 				}
 				{
-					p.SetState(44)
-					p.LogicalFn()
+					p.SetState(51)
+					p.MathFn()
 				}
 				{
-					p.SetState(45)
+					p.SetState(52)
 					p.expression(16)
 				}
 
-			case 2:
+			case 3:
 				localctx = NewExpressionContext(p, _parentctx, _parentState)
 				p.PushNewRecursionContext(localctx, _startState, EllieParserRULE_expression)
-				p.SetState(47)
+				p.SetState(54)
 
 				if !(p.Precpred(p.GetParserRuleContext(), 14)) {
 					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 14)", ""))
 					goto errorExit
 				}
 				{
-					p.SetState(48)
-					p.MathFn()
-				}
-				{
-					p.SetState(49)
-					p.expression(15)
-				}
-
-			case 3:
-				localctx = NewExpressionContext(p, _parentctx, _parentState)
-				p.PushNewRecursionContext(localctx, _startState, EllieParserRULE_expression)
-				p.SetState(51)
-
-				if !(p.Precpred(p.GetParserRuleContext(), 13)) {
-					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 13)", ""))
-					goto errorExit
-				}
-				{
-					p.SetState(52)
+					p.SetState(55)
 					p.SetFn()
 				}
 				{
-					p.SetState(53)
-					p.expression(14)
+					p.SetState(56)
+					p.expression(15)
 				}
 
 			case antlr.ATNInvalidAltNumber:
@@ -910,7 +937,7 @@ func (p *EllieParser) expression(_p int) (localctx IExpressionContext) {
 			}
 
 		}
-		p.SetState(59)
+		p.SetState(62)
 		p.GetErrorHandler().Sync(p)
 		if p.HasError() {
 			goto errorExit
@@ -943,7 +970,8 @@ type IFunctionContext interface {
 
 	// Getter signatures
 	ID() antlr.TerminalNode
-	Arguments() IArgumentsContext
+	AllArguments() []IArgumentsContext
+	Arguments(i int) IArgumentsContext
 
 	// IsFunctionContext differentiates from other interfaces.
 	IsFunctionContext()
@@ -985,12 +1013,37 @@ func (s *FunctionContext) ID() antlr.TerminalNode {
 	return s.GetToken(EllieParserID, 0)
 }
 
-func (s *FunctionContext) Arguments() IArgumentsContext {
+func (s *FunctionContext) AllArguments() []IArgumentsContext {
+	children := s.GetChildren()
+	len := 0
+	for _, ctx := range children {
+		if _, ok := ctx.(IArgumentsContext); ok {
+			len++
+		}
+	}
+
+	tst := make([]IArgumentsContext, len)
+	i := 0
+	for _, ctx := range children {
+		if t, ok := ctx.(IArgumentsContext); ok {
+			tst[i] = t.(IArgumentsContext)
+			i++
+		}
+	}
+
+	return tst
+}
+
+func (s *FunctionContext) Arguments(i int) IArgumentsContext {
 	var t antlr.RuleContext
+	j := 0
 	for _, ctx := range s.GetChildren() {
 		if _, ok := ctx.(IArgumentsContext); ok {
-			t = ctx.(antlr.RuleContext)
-			break
+			if j == i {
+				t = ctx.(antlr.RuleContext)
+				break
+			}
+			j++
 		}
 	}
 
@@ -1028,7 +1081,7 @@ func (p *EllieParser) Function() (localctx IFunctionContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(60)
+		p.SetState(63)
 		p.Match(EllieParserID)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -1036,14 +1089,18 @@ func (p *EllieParser) Function() (localctx IFunctionContext) {
 		}
 	}
 	{
-		p.SetState(61)
+		p.SetState(64)
 		p.Match(EllieParserT__1)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
 		}
 	}
-	p.SetState(63)
+	{
+		p.SetState(65)
+		p.Arguments()
+	}
+	p.SetState(67)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
 		goto errorExit
@@ -1052,13 +1109,125 @@ func (p *EllieParser) Function() (localctx IFunctionContext) {
 
 	if (int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&2146435076) != 0 {
 		{
-			p.SetState(62)
+			p.SetState(66)
 			p.Arguments()
 		}
 
 	}
 	{
-		p.SetState(65)
+		p.SetState(69)
+		p.Match(EllieParserT__2)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
+	}
+
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
+	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
+}
+
+// IFunctionNoArgsContext is an interface to support dynamic dispatch.
+type IFunctionNoArgsContext interface {
+	antlr.ParserRuleContext
+
+	// GetParser returns the parser.
+	GetParser() antlr.Parser
+
+	// Getter signatures
+	ID() antlr.TerminalNode
+
+	// IsFunctionNoArgsContext differentiates from other interfaces.
+	IsFunctionNoArgsContext()
+}
+
+type FunctionNoArgsContext struct {
+	antlr.BaseParserRuleContext
+	parser antlr.Parser
+}
+
+func NewEmptyFunctionNoArgsContext() *FunctionNoArgsContext {
+	var p = new(FunctionNoArgsContext)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = EllieParserRULE_functionNoArgs
+	return p
+}
+
+func InitEmptyFunctionNoArgsContext(p *FunctionNoArgsContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = EllieParserRULE_functionNoArgs
+}
+
+func (*FunctionNoArgsContext) IsFunctionNoArgsContext() {}
+
+func NewFunctionNoArgsContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *FunctionNoArgsContext {
+	var p = new(FunctionNoArgsContext)
+
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
+
+	p.parser = parser
+	p.RuleIndex = EllieParserRULE_functionNoArgs
+
+	return p
+}
+
+func (s *FunctionNoArgsContext) GetParser() antlr.Parser { return s.parser }
+
+func (s *FunctionNoArgsContext) ID() antlr.TerminalNode {
+	return s.GetToken(EllieParserID, 0)
+}
+
+func (s *FunctionNoArgsContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *FunctionNoArgsContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+	return antlr.TreesStringTree(s, ruleNames, recog)
+}
+
+func (s *FunctionNoArgsContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(EllieListener); ok {
+		listenerT.EnterFunctionNoArgs(s)
+	}
+}
+
+func (s *FunctionNoArgsContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(EllieListener); ok {
+		listenerT.ExitFunctionNoArgs(s)
+	}
+}
+
+func (p *EllieParser) FunctionNoArgs() (localctx IFunctionNoArgsContext) {
+	localctx = NewFunctionNoArgsContext(p, p.GetParserRuleContext(), p.GetState())
+	p.EnterRule(localctx, 8, EllieParserRULE_functionNoArgs)
+	p.EnterOuterAlt(localctx, 1)
+	{
+		p.SetState(71)
+		p.Match(EllieParserID)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
+	}
+	{
+		p.SetState(72)
+		p.Match(EllieParserT__1)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
+	}
+	{
+		p.SetState(73)
 		p.Match(EllieParserT__2)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -1142,12 +1311,12 @@ func (s *LogicalFnContext) ExitRule(listener antlr.ParseTreeListener) {
 
 func (p *EllieParser) LogicalFn() (localctx ILogicalFnContext) {
 	localctx = NewLogicalFnContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 8, EllieParserRULE_logicalFn)
+	p.EnterRule(localctx, 10, EllieParserRULE_logicalFn)
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(67)
+		p.SetState(75)
 		_la = p.GetTokenStream().LA(1)
 
 		if !(_la == EllieParserT__3 || _la == EllieParserT__4) {
@@ -1234,12 +1403,12 @@ func (s *MathFnContext) ExitRule(listener antlr.ParseTreeListener) {
 
 func (p *EllieParser) MathFn() (localctx IMathFnContext) {
 	localctx = NewMathFnContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 10, EllieParserRULE_mathFn)
+	p.EnterRule(localctx, 12, EllieParserRULE_mathFn)
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(69)
+		p.SetState(77)
 		_la = p.GetTokenStream().LA(1)
 
 		if !((int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&131008) != 0) {
@@ -1326,12 +1495,12 @@ func (s *SetFnContext) ExitRule(listener antlr.ParseTreeListener) {
 
 func (p *EllieParser) SetFn() (localctx ISetFnContext) {
 	localctx = NewSetFnContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 12, EllieParserRULE_setFn)
+	p.EnterRule(localctx, 14, EllieParserRULE_setFn)
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(71)
+		p.SetState(79)
 		_la = p.GetTokenStream().LA(1)
 
 		if !(_la == EllieParserT__16 || _la == EllieParserT__17) {
@@ -1465,15 +1634,15 @@ func (s *ArgumentsContext) ExitRule(listener antlr.ParseTreeListener) {
 
 func (p *EllieParser) Arguments() (localctx IArgumentsContext) {
 	localctx = NewArgumentsContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 14, EllieParserRULE_arguments)
+	p.EnterRule(localctx, 16, EllieParserRULE_arguments)
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(73)
+		p.SetState(81)
 		p.expression(0)
 	}
-	p.SetState(78)
+	p.SetState(86)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
 		goto errorExit
@@ -1482,7 +1651,7 @@ func (p *EllieParser) Arguments() (localctx IArgumentsContext) {
 
 	for _la == EllieParserT__18 {
 		{
-			p.SetState(74)
+			p.SetState(82)
 			p.Match(EllieParserT__18)
 			if p.HasError() {
 				// Recognition error - abort rule
@@ -1490,11 +1659,11 @@ func (p *EllieParser) Arguments() (localctx IArgumentsContext) {
 			}
 		}
 		{
-			p.SetState(75)
+			p.SetState(83)
 			p.expression(0)
 		}
 
-		p.SetState(80)
+		p.SetState(88)
 		p.GetErrorHandler().Sync(p)
 		if p.HasError() {
 			goto errorExit
@@ -1592,12 +1761,12 @@ func (s *BoolContext) ExitRule(listener antlr.ParseTreeListener) {
 
 func (p *EllieParser) Bool_() (localctx IBoolContext) {
 	localctx = NewBoolContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 16, EllieParserRULE_bool)
+	p.EnterRule(localctx, 18, EllieParserRULE_bool)
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(81)
+		p.SetState(89)
 		_la = p.GetTokenStream().LA(1)
 
 		if !(_la == EllieParserTRUE || _la == EllieParserFALSE) {
@@ -1638,13 +1807,13 @@ func (p *EllieParser) Sempred(localctx antlr.RuleContext, ruleIndex, predIndex i
 func (p *EllieParser) Expression_Sempred(localctx antlr.RuleContext, predIndex int) bool {
 	switch predIndex {
 	case 0:
-		return p.Precpred(p.GetParserRuleContext(), 15)
+		return p.Precpred(p.GetParserRuleContext(), 16)
 
 	case 1:
-		return p.Precpred(p.GetParserRuleContext(), 14)
+		return p.Precpred(p.GetParserRuleContext(), 15)
 
 	case 2:
-		return p.Precpred(p.GetParserRuleContext(), 13)
+		return p.Precpred(p.GetParserRuleContext(), 14)
 
 	default:
 		panic("No predicate with index: " + fmt.Sprint(predIndex))

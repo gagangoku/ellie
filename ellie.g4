@@ -7,7 +7,7 @@ lhs: TERM_TABLE | TERM_TABLE_COL | TERM_DB | TERM_DB_COL | TERM_CONST | TERM_STA
 expression: expression logicalFn expression
  | expression mathFn expression
  | expression setFn expression
- | function
+ | function | functionNoArgs
  | bool
  | TEXT
  | NUMBER
@@ -16,7 +16,8 @@ expression: expression logicalFn expression
  | '(' expression ')'
  ;
 
-function: ID '(' arguments? ')';
+function: ID '(' arguments arguments? ')';
+functionNoArgs: ID '(' ')';
 
 logicalFn: 'AND' | 'OR';
 mathFn: '+' | '-' | '/' | '*' | '^' | '<' | '<=' | '>' | '>=' | '==' | '!=';

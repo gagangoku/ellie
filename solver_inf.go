@@ -82,17 +82,18 @@ func itemLessFn(a, b ColIdxItem) bool {
 }
 
 const (
-	CTX_ProgContext       = "ProgContext"
-	CTX_LhsContext        = "LhsContext"
-	CTX_ExpressionContext = "ExpressionContext"
-	CTX_FunctionContext   = "FunctionContext"
-	CTX_MathOpContext     = "MathFnContext"
-	CTX_SetOpContext      = "SetFnContext"
-	CTX_LogicalFnContext  = "LogicalFnContext"
-	CTX_ArgumentsContext  = "ArgumentsContext"
-	CTX_BoolContext       = "BoolContext"
-	CTX_TerminalNode      = "TerminalNode"
-	CTX_Error             = "ErrorContext"
+	CTX_ProgContext           = "ProgContext"
+	CTX_LhsContext            = "LhsContext"
+	CTX_ExpressionContext     = "ExpressionContext"
+	CTX_FunctionContext       = "FunctionContext"
+	CTX_FunctionNoArgsContext = "FunctionNoArgsContext"
+	CTX_MathOpContext         = "MathFnContext"
+	CTX_SetOpContext          = "SetFnContext"
+	CTX_LogicalFnContext      = "LogicalFnContext"
+	CTX_ArgumentsContext      = "ArgumentsContext"
+	CTX_BoolContext           = "BoolContext"
+	CTX_TerminalNode          = "TerminalNode"
+	CTX_Error                 = "ErrorContext"
 )
 
 const (

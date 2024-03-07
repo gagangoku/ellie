@@ -419,7 +419,7 @@ func _IfFunc(evaluator *Evaluator, params ...any) (any, error) {
 	return vals[2], nil
 }
 func _RowFunc(evaluator *Evaluator, params ...any) (any, error) {
-	panic("Not yet implemented")
+	return evaluator.engine.lhsIndex, nil
 }
 
 func _LookupFunc(evaluator *Evaluator, params ...any) (any, error) {
@@ -504,12 +504,16 @@ func _JoinFunc(evaluator *Evaluator, params ...any) (any, error) {
 
 func _CumulativeSumFunc(evaluator *Evaluator, params ...any) (any, error) {
 	vals := _unrollParams(params...)
-	if len(vals) != 2 {
-		return "", fmt.Errorf("CUMULATIVE_SUM requires exactly 2 params, got: %v", vals)
+	if len(vals) == 0 {
+		return "", fmt.Errorf("CUMULATIVE_SUM requires atleast 1 params, got 0")
 	}
 
 	v := interfaceToFloat(vals[0])
-	key := interfaceToString(vals[1])
+	var key string = ""
+	if len(vals) > 1 {
+		key = strings.Join(lo.Map(vals[1:], func(item ResultValueType, index int) string { return interfaceToString(item) }), "---")
+	}
+
 	var newVal float64
 	if currVal, found := evaluator.cumSum[key]; !found {
 		newVal = v
